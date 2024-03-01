@@ -18,17 +18,18 @@ class SbbApplicationTests {
 
   @Autowired
   private QuestionRepository questionRepository;
+  @Test
+  void contextLoad() {
+  }
 
   //--------------질문 데이터 저장------------------------------------
   @Test
-  void testJpa1() {
+  void testJpa0() {
     Question q1 = new Question();
     q1.setSubject("sbb가 무엇인가요?");
     q1.setContent("sbb에 대해서 알고 싶습니다.");
     q1.setCreateDate(LocalDateTime.now());
     this.questionRepository.save(q1);  // 첫번째 질문 저장
-
-    System.out.println(q1.getId());
 
     Question q2 = new Question();
     q2.setSubject("스프링부트 모델 질문입니다.");
@@ -37,7 +38,17 @@ class SbbApplicationTests {
     this.questionRepository.save(q2);  // 두번째 질문 저장
 
     assertThat(q1.getId()).isGreaterThan(0);
-    assertThat(q1.getId()).isGreaterThan(q1.getId());
+    assertThat(q2.getId()).isGreaterThan(q1.getId());
+  }
+
+
+  //--------------질문 데이터 깔끔히 삭제 테스트케이스------------------------------------
+
+  @Test
+  void testJpa1() {
+    this.questionRepository.disableForeignKeyCheck();
+    this.questionRepository.truncate();
+    this.questionRepository.enableForeignKeyCheck();
   }
 
   //------------------findAll-----------------------------------------
@@ -110,5 +121,6 @@ class SbbApplicationTests {
   // quesiontRepository.delete(q): // Delete
 
   //delete from question where id = 4
+//-------------------------------------------------------------------------------------------------
 
 }
