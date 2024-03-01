@@ -1,5 +1,6 @@
 package com.example.sbb;
 
+import com.example.sbb.base.RepositoryUtil;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -7,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-public interface QuestionRepository extends JpaRepository<Question, Integer> {
+public interface QuestionRepository extends JpaRepository<Question, Integer>, RepositoryUtil {
 
   Question findBySubject(String subject);
 
@@ -20,16 +21,4 @@ public interface QuestionRepository extends JpaRepository<Question, Integer> {
   @Modifying
   @Query(value = "truncate question", nativeQuery = true)
   void truncate();
-
-  // 비활성화
-  @Transactional
-  @Modifying
-  @Query(value = "SET FOREIGN_KEY_CHECKS = 0", nativeQuery = true)
-  void disableForeignKeyCheck();
- // 활성화
-  @Transactional
-  @Modifying
-  @Query(value = "SET FOREIGN_KEY_CHECKS = 1", nativeQuery = true)
-  void enableForeignKeyCheck();
-
 }
