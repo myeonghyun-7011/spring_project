@@ -222,7 +222,18 @@ class Article {
   public Article(String title, String body) {
     this(++lastId, title, body);
   }
+
+  //--------------------------------------------------------------------------------------------------
+
+
+
+  @GetMapping("/")
+  public String root() {
+    return "redirect:/home";
+  }
 }
+
+
 //---------------person 생성자----------------------------------------------------------------------------
 
 @AllArgsConstructor
