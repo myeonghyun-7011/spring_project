@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -23,6 +24,7 @@ public class Question {
 
   private LocalDateTime createDate;
 
+  //OneToMany는 원래 fetch가 LAZY(지연로딩) = >  fetch = FetchType.EAGER(즉시로딩) 변경
   @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
-  private List<Answer> answerList;
+  private List<Answer> answerList = new ArrayList<>();
 }

@@ -19,6 +19,6 @@ public interface QuestionRepository extends JpaRepository<Question, Integer>, Re
   //--------------truncate를 위한 Foreign key 비활성화,활성화------------------------------------
   @Transactional
   @Modifying
-  @Query(value = "truncate question", nativeQuery = true)
+  @Query(value = "ALTER TABLE question AUTO_INCREMENT = 1", nativeQuery = true)
   void truncate();
 }

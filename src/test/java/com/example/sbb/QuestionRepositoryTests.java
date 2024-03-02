@@ -39,6 +39,7 @@ public class QuestionRepositoryTests {
 
     return q2.getId();
   }
+
   private void createSampleData() {
     lastSampleDataId = createSampleData(questionRepository);
   }
@@ -46,6 +47,7 @@ public class QuestionRepositoryTests {
   // static은 본사 직원이기 때문에  questionRepository(본사직원이아님.)
   // clearData(QuestionRepository questionRepository) 넘겨줘야함.
   public static void clearData(QuestionRepository questionRepository) {
+    questionRepository.deleteAll(); // DELETE FROM question
     questionRepository.truncateTable();
   }
 
