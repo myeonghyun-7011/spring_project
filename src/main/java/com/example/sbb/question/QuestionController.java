@@ -4,9 +4,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
-
+@RequestMapping("/question") // <- 중복 제거
 @RequiredArgsConstructor //생성자 주입
 @Controller
 // 컨트롤러는 Repository가 있는지 몰라야한다.
@@ -27,7 +29,7 @@ public class QuestionController {
   // final이 붙는것들은 생성자 주입
   private final QuestionService questionService;
 
-  @GetMapping("/question/list")
+  @GetMapping("/list")
   // 이 자리에 @ResponseBody가 없으면 resource/template/question_list.html 파일을 뷰로 삼는다.
   public String list(Model model) {
     List<Question> questionList = questionService.getList();
@@ -38,4 +40,12 @@ public class QuestionController {
     return "question_list";
   }
 
+  @GetMapping("/detail/{id}")
+  public String detail(Model model, @PathVariable int id) {
+    Question question = questionService.getQuestion(id);
+
+    model.addAttribute("question", question);
+
+    return "question_detail";
+  }
 }
