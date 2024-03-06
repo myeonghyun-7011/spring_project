@@ -1,142 +1,158 @@
 <!DOCTYPE html>
 <html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style2.css" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="stylesheet" href="C:\Users\user\Desktop\exam\JS\css\home_style.css">
-
-  <title>김명현 자기소개서</title>
-  <div class="navbar">
-    <h2>자기소개서</h2>
-    <ul>
-      <li><a href="/home">Home</a></li>
-      <li><a href="/question/list">Portfolio board</a></li>
-      <li><a href="#">login</a></li>
-      <li><a href="#">join</a></li>
-    </ul>
-  </div>
-</head>
-
-<body>
-
-
-
-  <h5 class="seprator">Who I Am</h5>
-  <div class="about">
-    <img src="김명현.jpg">
-    <div class="info">
-
-      <h3>About Me</h3>
-      <p>
-        안녕하십니까 저는 DevOps Engineer를 꿈꾸는 김명현입니다.
-      </p>
-      <button class="hire-btn">Hire Me</button>
+    <title>김명현 자기소개서</title>
+    <div class="navbar">
+      <h2>자기소개서</h2>
+      <ul>
+        <li><a href="/home">Home</a></li>
+        <li><a href="/question/list">Portfolio board</a></li>
+        <li><a href="#">login</a></li>
+        <li><a href="#">join</a></li>
+      </ul>
     </div>
-  </div>
+  </head>
 
-  <h5 class="seprator">project</h5>
-  <div class="main">
-    <div class="main1">
-      <a href="/question/list" style="text-decoration-line: none;">
-        <h4>프로젝트 경험</h4>
-      </a>
-      <div class="pro1">
-        <h3>프로젝트 제목1 : Docker image 사용한 grafana & Prometheus 로 시각화</h3>
-        <li>작업기간</li>
-        <p class="procon">aasgag</p>
-        <li>인력 구성</li>
-        <li>프로젝트 목적</li>
-        <li>사용언어 및 개발환경</li>
-        <li>느낀점</li>
-      </div>
-      <div class="pro2">
-        <h3>프로젝트 제목2 : Spring 을 이용한 로그인 & 게시판 만들기</h3>
-        <li>작업기간</li>
-        <p class="procon">aasgag</p>
-        <li>인력 구성</li>
-        <li>프로젝트 목적</li>
-        <li>사용언어 및 개발환경</li>
-        <li>느낀점</li>
-      </div>
-
-    </div>
-  </div>
-
-
-  <h5 class="seprator">My Skills</h5>
-
-  <div class="skills">
-    <div class="left">
+  <body>
+    <h5 class="seprator">Who I Am</h5>
+    <div class="about">
+      <img src="김명현.jpg" />
       <div class="info">
-        <h3>기술 스택 / Skill Set</h3>
-        <div class="skillns">
-          <div class="item2">
-            <li>Language</li>
-            <div class="item">
-              <i class='bx bxl-java'></i>
-              <i class='bx bxl-python'></i>
-            </div>
-            <li>FrontEnd</li>
-            <div class="item">
-              <i class='bx bxl-html5'></i>
-              <i class='bx bxl-css3'></i>
-              <i class='bx bxl-bootstrap'></i>
-              <i class='bx bxl-javascript'></i>
-            </div>
-            <li>BackEnd</li>
-            <div class="item">
-              <i class='bx bxl-spring-boot'></i>
-              <li><img class="img1" src="C:\Users\user\Desktop\exam\JS\img\mariadb.png">mariadb</li>
+        <h3>About Me</h3>
+        <p>안녕하십니까 저는 DevOps Engineer를 꿈꾸는 김명현입니다.</p>
+        <button class="hire-btn">Hire Me</button>
+      </div>
+    </div>
+
+    <h5 class="seprator">project</h5>
+    <div class="main">
+      <div class="main1">
+        <h4 style="text-decoration-line: none">프로젝트 경험</h4>
+
+      <table class="pro1">
+        <thead>
+          <th scope="row" class="pro1" style="border-bottom: none; font-size: 25px; text-align: center;">프로젝트 제목 : </th>
+          <td style="border-bottom: none; font-size: 25px; text-align: center;">Docker image 사용한 grafana & Prometheus 로 시각화</td>
+        </thead>
+      </table>
+        <table>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>작업기간</td>
+              <td class="con">내용</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>인력 구성</td>
+              <td class="con">내용</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>프로젝트 목적</td>
+              <td class="con">내용</td>
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+              <td>사용언어 및 개발환경</td>
+              <td class="con">내용</td>
+            </tr>
+            <tr>
+              <th scope="row">5</th>
+              <td>느낀점</td>
+              <td class="con">내용</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="pro2">
+          <thead >
+            <th scope="row" class="pro1" style="border-bottom: none; font-size: 25px; text-align: center;">프로젝트 제목 : </th>
+            <td style="border-bottom: none; font-size: 25px; text-align: center;">Docker image 사용한 grafana & Prometheus 로 시각화</td>
+          </thead>
+        </table>
+        <table>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>작업기간</td>
+              <td class="con">내용</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>인력 구성</td>
+              <td class="con">내용</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>프로젝트 목적</td>
+              <td class="con">내용</td>
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+              <td>사용언어 및 개발환경</td>
+              <td class="con">내용</td>
+            </tr>
+            <tr>
+              <th scope="row">5</th>
+              <td>느낀점</td>
+              <td class="con">내용</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <h5 class="seprator">My Skills</h5>
+
+    <div class="skills">
+      <div class="left">
+        <div class="info">
+          <h3>기술 스택 / Skill Set</h3>
+
+          <div class="skillns">
+            <div class="item1">
+              <li class="mark1">Language</li>
+              <i class="bx bxl-java"></i>
+              <i class="bx bxl-python"></i>
             </div>
 
-            <li>DevOps</li>
-            <li>ETC</li>
+            <div class="item1">
+              <li class="mark1">FrontEnd</li>
+              <i class="bx bxl-html5"></i>
+              <i class="bx bxl-css3"></i>
+              <i class="bx bxl-bootstrap"></i>
+              <i class="bx bxl-javascript"></i>
+            </div>
+
+            <div class="item1">
+              <li class="mark1">BackEnd</li>
+              <i class="bx bxl-spring-boot"></i>
+            </div>
+
+            <div class="item1">
+              <li class="mark1">DevOps</li>
+            </div>
+
+            <div class="item1">
+              <li class="mark1">ETC</li>
+            </div>
           </div>
         </div>
+        <button class="hire-btn">Hire Me</button>
       </div>
-      <button class="hire-btn">Hire Me</button>
     </div>
 
-  </div>
-
-  <footer>
-    <div class="cols">
-      <div class="about-col">
-        <h3>프로젝트 링크</h3>
-        <p>도커,K8S,Ansible,Jenkins,Sonarqube</p>
-      </div>
-
-      <div class="links-col">
-        <h4>Useful Links</h4>
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Skills</a>
-        <a href="#">Portfolio</a>
-        <a href="#">Contact</a>
-      </div>
-
-      <div class="links-col">
-        <h4>Etc</h4>
-        <a href="#">Github</a>
-      </div>
-
-      <div class="news-col">
-        <h4>NewsLetter</h4>
-        <p>Enter your email and get notified about news, of.</p>
-
-        <form>
-          <input type="email" placeholder="Your email address">
-          <button><i class='bx bxl-telegram'></i></button>
-        </form>
-
-      </div>
-
-    </div>
-
-  </footer>
-
-</body>
-
+    <footer>
+      <p>THANK YOU</p>
+    </footer>
+  </body>
 </html>
