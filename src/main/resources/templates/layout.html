@@ -1,34 +1,34 @@
-<!doctype html>
+<!DOCTYPE html>
 <html
     lang="ko"
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
     xmlns:th="http://www.thymeleaf.org">
+
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css">
-  <!-- sbb CSS -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
-  <title>자기소개서</title>
-</head>
-<body>
 
-<header>
-  <div class="container py-3 d-flex">
-    <a th:href="@{/home}">메인 페이지</a>
-
-    <div class="flex-grow-1"></div>
-
-    <div class="ml-auto">
-      <a th:href="@{/question/list}">질문 리스트</a>
-    </div>
+  <title>김명현 자기소개서</title>
+  <div class="navbar">
+    <h2>자기소개서</h2>
+    <ul>
+      <li><a href="/home">Home</a></li>
+      <li><a href="/question/list">Portfolio board</a></li>
+      <li><a href="#">login</a></li>
+      <li><a href="#">join</a></li>
+    </ul>
   </div>
-</header>
+</head>
 
+<body style="min-height:100vh;" class="d-flex flex-column">
 <!-- 기본 템플릿 안에 삽입될 내용 Start -->
-<th:block layout:fragment="content"></th:block>
+<main class="flex-grow-1" >
+  <th:block layout:fragment="content"></th:block>
+</main>
 <!-- 기본 템플릿 안에 삽입될 내용 End -->
 
 <footer>

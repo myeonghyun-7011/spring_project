@@ -1,15 +1,58 @@
-@font-face {
-    font-family: 'GmarketSansMedium';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    text-decoration-line: none;
 }
 
-html > body {
-    font-family: 'GmarketSansMedium';
+body{
+    height: 100vh;
+    background: #212529;
 }
-/* lib */
-a {
-    color: inherit;
+
+.navbar{
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    padding: 0 50px;
+}
+
+.navbar h2{
+    margin-left: 45%;
+    color: #ffb742;
+    font-weight: 600;
+}
+
+.navbar ul{
+
+    display: flex;
+}
+
+.navbar ul li{
+    list-style: none;
+}
+
+.navbar ul li a{
     text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    margin-right: 25px;
+    transition: color 0.3s ease;
+}
+
+.navbar ul li:hover a{
+    color: #ffb742;
+}
+
+.navbar ul li:last-child a{
+    margin: 0;
+}
+footer{
+    background: #1c1c1c;
 }
