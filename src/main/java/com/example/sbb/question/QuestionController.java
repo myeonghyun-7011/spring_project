@@ -3,9 +3,7 @@ package com.example.sbb.question;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RequestMapping("/question") // <- 중복 제거
@@ -47,5 +45,18 @@ public class QuestionController {
     model.addAttribute("question", question);
 
     return "question_detail";
+  }
+
+  @GetMapping("/create") // form을 보여주기 위한 메서드
+  public String questionCreate() {
+    return "question_form";
+  }
+
+  @PostMapping("/create") // 저장하고 list로 다시 돌아가기 위한 메서드
+  public String questionCreate( String subject,  String content) { // question_form.html 에서 등록되 내용이 저장됨.
+
+    questionService.create(subject,content); // 제목과 내용을 QuestionRepository에저장
+
+    return "redirect:/question/list"; // 질문 저장후 질문목록으로 이동
   }
 }
