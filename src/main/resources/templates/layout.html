@@ -1,12 +1,16 @@
-
 <!DOCTYPE html>
-<html lang="ko">
+<html
+    lang="ko"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="stylesheet" href="C:\Users\user\Desktop\exam\JS\css\style.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
 
   <title>김명현 자기소개서</title>
   <div class="navbar">
@@ -15,22 +19,20 @@
       <li><a href="/home">Home</a></li>
       <li><a href="/question/list">Portfolio board</a></li>
       <li><a href="#">login</a></li>
-      <li><a href="#">join</a></li> 
+      <li><a href="#">join</a></li>
     </ul>
   </div>
 </head>
 
 <body>
-
 <!-- 기본 템플릿 안에 삽입될 내용 Start -->
 <th:block layout:fragment="content"></th:block>
 <!-- 기본 템플릿 안에 삽입될 내용 End -->
 
+</body>
 <footer>
   <div class="container py-3 d-flex justify-content-center">
     copyright all rights reserved
   </div>
 </footer>
-
-</body>
 </html>
