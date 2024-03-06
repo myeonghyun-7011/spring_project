@@ -1,9 +1,15 @@
 package com.example.sbb.question;
 
+import com.example.sbb.answer.AnswerForm;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 @RequestMapping("/question") // <- 중복 제거
@@ -39,7 +45,7 @@ public class QuestionController {
   }
 
   @GetMapping("/detail/{id}")
-  public String detail(Model model, @PathVariable int id) {
+  public String detail(Model model, @PathVariable int id, AnswerForm answerForm) {
     Question question = questionService.getQuestion(id);
 
     model.addAttribute("question", question);
@@ -48,14 +54,23 @@ public class QuestionController {
   }
 
   @GetMapping("/create") // form을 보여주기 위한 메서드
-  public String questionCreate() {
+  public String questionCreate(QuestionForm questionForm) {
     return "question_form";
   }
 
-  @PostMapping("/create") // 저장하고 list로 다시 돌아가기 위한 메서드
-  public String questionCreate( String subject,  String content) { // question_form.html 에서 등록되 내용이 저장됨.
+  @PostMapping("/create")
+  // 저장하고 list로 다시 돌아가기 위한 메서드
+  // question_form.html 에서 등록되 내용이 저장됨.
+  // @Valid => 그 룰에 맞게 작성한 내용을 체크해서 questionForm 에 넣어줌, 성공, 실패는 bindingResult에서 관리.
+  // 유효성 검사를 함.
+  public String questionCreate(Model model, @Valid QuestionForm questionForm, BindingResult bindingResult) {
 
-    questionService.create(subject,content); // 제목과 내용을 QuestionRepository에저장
+    // 에러있는지 확인 절차.
+    if (bindingResult.hasErrors()) {
+      return  "question_form";
+    }
+
+    questionService.create(questionForm.getSubject(),questionForm.getContent()); // 제목과 내용을 QuestionRepository에저장
 
     return "redirect:/question/list"; // 질문 저장후 질문목록으로 이동
   }
