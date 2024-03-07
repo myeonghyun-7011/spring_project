@@ -22,6 +22,7 @@ public class AnswerController {
 
   @PostMapping("/create/{id}")
   public String createAnswer(Model model, @PathVariable("id") Integer id, @Valid AnswerForm answerForm, BindingResult bindingResult) {
+
     Question question = questionService.getQuestion(id);
 
     if (bindingResult.hasErrors()) {
@@ -30,7 +31,6 @@ public class AnswerController {
     }
 
 
-    // TODO: 답변을 저장한다.
     // 답변 등록 시작
     answerService.create(question, answerForm.getContent());
     // 답변 등록 끝

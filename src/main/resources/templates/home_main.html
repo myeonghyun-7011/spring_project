@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html
     lang="ko"
-    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
     xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8" />
@@ -16,7 +15,7 @@
       <li><a href="/home">Home</a></li>
       <li><a href="/question/list">Portfolio board</a></li>
       <li><a href="#">login</a></li>
-      <li><a href="#">join</a></li>
+      <li><a href="/user/signup">join</a></li>
     </ul>
   </div>
 </head>
@@ -24,23 +23,48 @@
 <body>
 <h5 class="seprator">Who I Am</h5>
 <div class="about">
-  <img src="김명현.jpg" />
+  <img class="img" src="김명현.jpg" />
   <div class="info">
-    <h3>About Me</h3>
-    <p>안녕하십니까 저는 DevOps Engineer를 꿈꾸는 김명현입니다.</p>
-    <button class="hire-btn">Hire Me</button>
+    <table class="myself">
+      <tbody class="myself1">
+      <tr>
+        <th scope="row">Birthday :</th>
+        <td>1995.09.06</td>
+      </tr>
+      <tr>
+        <th scope="row">Eamil :</th>
+        <td>dhvlftmd7013@naver.com</td>
+      </tr>
+      <tr>
+        <th scope="row">Address :</th>
+        <td>경기도 고양시 덕양구 화정로 69</td>
+      </tr>
+      <tr>
+        <th scope="row">병역사항 :</th>
+        <td>군필(육군)</td>
+      </tr>
+      </tbody>
+    </table>
   </div>
 </div>
+
+<h5 class="seprator">About me</h5>
+<div class="about1">
+  <p>안녕하십니까 저는 DevOps Engineer를 꿈꾸는 김명현입니다.</p>
+  <button class="hire-btn">Hire Me</button>
+</div>
+
 
 <h5 class="seprator">project</h5>
 <div class="main">
   <div class="main1">
-    <h4 style="text-decoration-line: none">프로젝트 경험</h4>
+    <h4>프로젝트 경험</h4>
 
     <table class="pro1">
       <thead>
       <th scope="row" class="pro1" style="border-bottom: none; font-size: 25px; text-align: center;">프로젝트 제목 : </th>
-      <td style="border-bottom: none; font-size: 25px; text-align: center;">Docker image 사용한 grafana & Prometheus 로 시각화</td>
+      <td style="border-bottom: none; font-size: 25px; text-align: center;">Docker image 사용한 grafana & Prometheus 로
+        시각화</td>
       </thead>
     </table>
     <table>
@@ -74,9 +98,10 @@
     </table>
 
     <table class="pro2">
-      <thead >
+      <thead>
       <th scope="row" class="pro1" style="border-bottom: none; font-size: 25px; text-align: center;">프로젝트 제목 : </th>
-      <td style="border-bottom: none; font-size: 25px; text-align: center;">Docker image 사용한 grafana & Prometheus 로 시각화</td>
+      <td style="border-bottom: none; font-size: 25px; text-align: center;">Docker image 사용한 grafana & Prometheus 로
+        시각화</td>
       </thead>
     </table>
     <table>
@@ -108,51 +133,67 @@
       </tr>
       </tbody>
     </table>
-  </div>
-</div>
-
-<h5 class="seprator">My Skills</h5>
-
-<div class="skills">
-  <div class="left">
-    <div class="info">
-      <h3>기술 스택 / Skill Set</h3>
-
-      <div class="skillns">
-        <div class="item1">
-          <li class="mark1">Language</li>
-          <i class="bx bxl-java"></i>
-          <i class="bx bxl-python"></i>
-        </div>
-
-        <div class="item1">
-          <li class="mark1">FrontEnd</li>
-          <i class="bx bxl-html5"></i>
-          <i class="bx bxl-css3"></i>
-          <i class="bx bxl-bootstrap"></i>
-          <i class="bx bxl-javascript"></i>
-        </div>
-
-        <div class="item1">
-          <li class="mark1">BackEnd</li>
-          <i class="bx bxl-spring-boot"></i>
-        </div>
-
-        <div class="item1">
-          <li class="mark1">DevOps</li>
-        </div>
-
-        <div class="item1">
-          <li class="mark1">ETC</li>
-        </div>
-      </div>
-    </div>
     <button class="hire-btn">Hire Me</button>
   </div>
 </div>
 
+
+<h5 class="seprator">My Skills</h5>
+<div class="skillset">
+
+  <table class="skillpro1">
+    <thead>
+    <th>기술 스택</th>
+    <td>Skill Set</td>
+    </thead>
+
+    <tbody class="imoti">
+    <tr>
+      <th scope="row">Language</th>
+      <td class="bx bxl-java"></td>
+      <td class="bx bxl-python"></td>
+      <td class='bx bxl-javascript'></td>
+    </tr>
+
+    <tr>
+      <th scope="row">FrontEnd</th>
+      <td class="bx bxl-java"></td>
+      <td class="bx bxl-python"></td>
+    </tr>
+
+    <tr>
+      <th scope="row">BackEnd</th>
+      <td class='bx bxl-spring-boot'></td>
+      <td>Mysql</td>
+      <td>MariaDB</td>
+    </tr>
+
+    <tr>
+      <th scope="row">DevOps</th>
+      <td  class='bx bxl-docker'></td>
+      <td class='bx bxl-kubernetes'></td>
+      <td>Ansible</td>
+      <td>Prometheus</td>
+      <td>Grafana</td>
+      <td>Jenkins</td>
+      <td>ElasticSearch</td>
+    </tr>
+
+    <tr>
+      <th scope="row">ETC</th>
+      <td class='bx bxl-github'></td>
+      <td class='bx bxl-gitlab'></td>
+      <td class='bx bxl-git'></td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>
+
 <footer>
+  <div class="container py-3 d-flex justify-content-center"></div>
   <p>THANK YOU</p>
 </footer>
 </body>
+
 </html>

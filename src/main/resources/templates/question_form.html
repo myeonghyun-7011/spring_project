@@ -6,10 +6,8 @@
   <h5 class="my-3 border-bottom pb-2">프로젝트 등록</h5>
 
   <form th:action="@{/question/create}" th:object="${questionForm}" method="POST">
-
-    <div class="alert alert-danger" role="alert" th:if="${#fields.hasAnyErrors()}">
-      <div th:each="err : ${#fields.allErrors()}" th:text="${err}" />
-    </div>
+    <!-- form_error에 중복을 제거하여 코드 간결. -->
+    <div th:replace="~{form_errors :: formErrorsFragment}"></div>
 
     <div class="mb-3">
       <label class="form-label">프로젝트 제목</label>
@@ -18,7 +16,7 @@
 
     <div class="mb-3">
       <label class="form-label">프로젝트 내용</label>
-      <textarea th:field="*{content}" class="form-control" rows="10" placeholder="프로젝트내용을 입력해주세요." ></textarea>
+      <textarea th:field="*{content}" class="form-control" rows="10" placeholder="프로젝트내용을 입력해주세요."></textarea>
     </div>
 
     <button type="submit" class="btn btn-primary my-2">저장하기</button>
