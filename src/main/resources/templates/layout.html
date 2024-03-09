@@ -2,7 +2,8 @@
 <html
     lang="ko"
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-    xmlns:th="http://www.thymeleaf.org">
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://thymeleaf.org/extras/spring-security">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Bootstrap CSS -->
@@ -30,7 +31,12 @@
 </main>
 <!-- 기본 템플릿 안에 삽입될 내용 End -->
 
+<!-- 자바스크립트 Start -->
+<th:block layout:fragment="script"></th:block>
+<!-- 자바스크립트 End -->
+
 </body>
+
 <footer style="bg-black">
   <div class="container py-3 d-flex justify-content-center">
     copyright all rights reserved

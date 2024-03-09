@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://thymeleaf.org/extras/spring-security">
+
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
@@ -12,7 +14,10 @@
     <ul>
       <li><a href="/home">Home</a></li>
       <li><a href="/question/list">Portfolio board</a></li>
-      <li><a href="/user/login">login</a></li>
+      <!--  sec:authorize="isAnonymous()" 로그아웃 상태일 경우 -->
+      <li><a  sec:authorize="isAnonymous()" href="/user/login">login</a></li>
+      <!--  sec:authorize="isAuthenticated()" 로그인 상태일 경우  -->
+      <li><a  sec:authorize="isAuthenticated()" href="/user/logout">logout</a></li>
       <li><a href="/user/signup">join</a></li>
     </ul>
   </div>

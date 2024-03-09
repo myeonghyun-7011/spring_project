@@ -1,5 +1,6 @@
 package com.example.sbb.user;
 
+import com.example.sbb.DataNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -29,17 +30,22 @@ public class UserService {
     // user 정보를 저장하고 에러가 뜨면 출력해라
     try {
       userRepository.save(user);
-    }
-    catch (DataIntegrityViolationException e) {
+    } catch (DataIntegrityViolationException e) {
 
       if(userRepository.existsByUsername(username)) {
         throw new SignupUsernameDuplicatedException("이미 사용중인 username 입니다.");
-      }
-      else {
+      } else {
         throw new SignupEmailDuplicatedException("이미 사용중인 email 입니다.");
       }
     }
-
     return user;
+  }
+
+  //
+  // username을 찾으면 레포지토리에 저장, 못 넣어주면 exception 출력
+  public SiteUser getUser(String username) {
+    return userRepository.findByUsername(username).orElseThrow(() ->
+        new DataNotFoundException("siteuser not found")
+    );
   }
 }

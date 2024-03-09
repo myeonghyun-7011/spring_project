@@ -1,6 +1,7 @@
 package com.example.sbb.question;
 
 import com.example.sbb.DataNotFoundException;
+import com.example.sbb.user.SiteUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -16,7 +17,7 @@ import java.util.List;
 @Service
 public class QuestionService {
 
-  private  final QuestionRepository questionRepository;
+  private final QuestionRepository questionRepository;
 
   public Page<Question> getList(int page) {
     List<Sort.Order> sorts = new ArrayList<>();
@@ -32,11 +33,28 @@ public class QuestionService {
         .orElseThrow(() -> new DataNotFoundException("no %d question not found".formatted(id)));
   }
 
-  public void create(String subject, String content) {
+  public void create(String subject, String content, SiteUser author) {
     Question q = new Question(); // Question class 에 q라는 객체를 생성하여 정보들을 저장.
     q.setSubject(subject);
     q.setContent(content);
+    q.setAuthor(author);
     q.setCreateDate(LocalDateTime.now());
     questionRepository.save(q);
+  }
+
+  public void modify(Question question, String subject, String content) {
+    question.setSubject(subject);
+    question.setContent(content);
+    question.setModifyDate(LocalDateTime.now());
+    questionRepository.save(question);
+  }
+
+  public void delete(Question question) {
+    questionRepository.delete(question);
+  }
+
+  public void vote(Question question, SiteUser siteUser) {
+    question.getVoter().add(siteUser);
+    questionRepository.save(question);
   }
 }

@@ -1,7 +1,11 @@
 package com.example.sbb;
 
+import com.example.sbb.answer.AnswerRepository;
 import com.example.sbb.question.Question;
 import com.example.sbb.question.QuestionRepository;
+import com.example.sbb.user.SiteUser;
+import com.example.sbb.user.UserRepository;
+import com.example.sbb.user.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +23,13 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 @SpringBootTest
 public class QuestionRepositoryTests {
   @Autowired
+  private UserService userService;
+  @Autowired
+  private AnswerRepository answerRepository;
+  @Autowired
   private QuestionRepository questionRepository;
+  @Autowired
+  private UserRepository userRepository;
   private static int lastSampleDataId;
 
   @BeforeEach
@@ -31,16 +41,21 @@ public class QuestionRepositoryTests {
 
   //-----------------------------------------------------------------------------------------
 // static (본사직원생성)
-  public static int createSampleData(QuestionRepository questionRepository) {
+  public static int createSampleData(UserService userService, QuestionRepository questionRepository) {
+    UserServiceTests.createSampleData(userService);
+
     Question q1 = new Question();
+
     q1.setSubject("sbb가 무엇인가요?");
     q1.setContent("sbb에 대해서 알고 싶습니다.");
+    q1.setAuthor(new SiteUser(1));
     q1.setCreateDate(LocalDateTime.now());
     questionRepository.save(q1);  // 첫번째 질문 저장
 
     Question q2 = new Question();
     q2.setSubject("스프링부트 모델 질문입니다.");
     q2.setContent("id는 자동으로 생성되나요?");
+    q2.setAuthor(new SiteUser(2));
     q2.setCreateDate(LocalDateTime.now());
     questionRepository.save(q2);  // 두번째 질문 저장
 
@@ -48,19 +63,19 @@ public class QuestionRepositoryTests {
   }
 
   private void createSampleData() {
-    lastSampleDataId = createSampleData(questionRepository);
+    lastSampleDataId = createSampleData(userService, questionRepository);
   }
 
   //-----------------------------------------------------------------------------------------
   // static은 본사 직원이기 때문에  questionRepository(본사직원이아님.)
   // clearData(QuestionRepository questionRepository) 넘겨줘야함.
-  public static void clearData(QuestionRepository questionRepository) {
-    questionRepository.deleteAll(); // DELETE FROM question
-    questionRepository.truncateTable();
+  public static void clearData(UserRepository userRepository, AnswerRepository answerRepository,
+                               QuestionRepository questionRepository) {
+    UserServiceTests.clearData(userRepository, answerRepository, questionRepository);
   }
 
   private void clearData() {
-    clearData(questionRepository);
+    clearData(userRepository, answerRepository, questionRepository);
   }
 
   //-----------------------------------------------------------------------------------------
@@ -69,12 +84,14 @@ public class QuestionRepositoryTests {
     Question q1 = new Question();
     q1.setSubject("sbb가 무엇인가요?");
     q1.setContent("sbb에 대해서 알고 싶습니다.");
+    q1.setAuthor(new SiteUser(1));
     q1.setCreateDate(LocalDateTime.now());
     questionRepository.save(q1);  // 첫번째 질문 저장
 
     Question q2 = new Question();
     q2.setSubject("스프링부트 모델 질문입니다.");
     q2.setContent("id는 자동으로 생성되나요?");
+    q2.setAuthor(new SiteUser(2));
     q2.setCreateDate(LocalDateTime.now());
     questionRepository.save(q2);  // 두번째 질문 저장
 
@@ -156,6 +173,7 @@ public class QuestionRepositoryTests {
       Question q = new Question();
       q.setSubject(" %d번 질문 ".formatted(id));
       q.setContent(" %d번 질문의 내용 ".formatted(id));
+      q.setAuthor(new SiteUser(2));
       q.setCreateDate(LocalDateTime.now());
       questionRepository.save(q);
     });

@@ -4,9 +4,11 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Setter;
 
 @AllArgsConstructor
 @Getter
+@Setter
 public class QuestionForm {
 
   // @Vaild Rule에 해당함. ,QuestionForm class를 사용하여 룰을 객체 생성.
@@ -16,5 +18,9 @@ public class QuestionForm {
 
   @NotEmpty(message="프로젝트내용은 필수항목입니다.")
   private String subject;
+
+  public void setSubject(String subject) {
+
+  }
 }
 

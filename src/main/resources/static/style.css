@@ -6,18 +6,16 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
     text-decoration-line: none;
-    color:white;
+    color: white;
 }
 
 
 body{
-    font-color: white;
     height: 100vh;
     background: #212529;
 }
 
 .navbar{
-
     display: flex;
     align-items: center;
     justify-content: space-between;

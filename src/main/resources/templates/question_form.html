@@ -2,10 +2,11 @@
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
     xmlns:th="http://www.thymeleaf.org"
     layout:decorate="~{layout}">
+
 <div layout:fragment="content" class="container my-3">
   <h5 class="my-3 border-bottom pb-2">프로젝트 등록</h5>
 
-  <form th:action="@{/question/create}" th:object="${questionForm}" method="POST">
+  <form th:action="@{''}" th:object="${questionForm}" method="POST">
     <!-- form_error에 중복을 제거하여 코드 간결. -->
     <div th:replace="~{form_errors :: formErrorsFragment}"></div>
 
