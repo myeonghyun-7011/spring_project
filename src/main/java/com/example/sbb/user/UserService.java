@@ -1,6 +1,8 @@
 package com.example.sbb.user;
 
-import com.example.sbb.DataNotFoundException;
+import com.example.sbb.Exception.DataNotFoundException;
+import com.example.sbb.Exception.SignupEmailDuplicatedException;
+import com.example.sbb.Exception.SignupUsernameDuplicatedException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

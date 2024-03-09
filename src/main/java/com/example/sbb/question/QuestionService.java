@@ -1,6 +1,6 @@
 package com.example.sbb.question;
 
-import com.example.sbb.DataNotFoundException;
+import com.example.sbb.Exception.DataNotFoundException;
 import com.example.sbb.user.SiteUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -19,12 +19,16 @@ public class QuestionService {
 
   private final QuestionRepository questionRepository;
 
-  public Page<Question> getList(int page) {
+  public Page<Question> getList(String kw, int page) {
     List<Sort.Order> sorts = new ArrayList<>();
     sorts.add(Sort.Order.desc("createDate")); // desc 내림차순으로 보여지게끔.
     Pageable pageable = PageRequest.of(page, 10, Sort.by(sorts)); // 한 페이지에 10개까지 가능.
 
-    return this.questionRepository.findAll(pageable);
+    if(kw == null || kw.trim().length() == 0) {
+      return questionRepository.findAll(pageable);
+    }
+
+    return questionRepository.findDistinctBySubjectContainsOrContentContainsOrAuthor_usernameContainsOrAnswerList_contentContainsOrAnswerList_Author_usernameContains(kw, kw, kw, kw, kw, pageable);
   }
 
   // 예외처리 없으면 종료 시켜라.

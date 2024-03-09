@@ -1,30 +1,32 @@
-<!DOCTYPE html>
-<html
-    lang="ko"
-    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-    xmlns:th="http://www.thymeleaf.org"
-    xmlns:sec="http://thymeleaf.org/extras/spring-security">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css">
-<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-<link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+<!doctype html>
+<html lang="ko"
+      xmlns:layout="http://ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://thymeleaf.org">
 <head>
-  <title>김명현 자기소개서</title>
-  <div class="navbar">
-    <h2>자기소개서</h2>
-    <ul>
-      <li><a href="/home">Home</a></li>
-      <li><a href="/question/list">Portfolio board</a></li>
-      <li><a  sec:authorize="isAnonymous()" href="/user/login">login</a></li>
-      <li><a  sec:authorize="isAuthenticated()" href="/user/logout">logout</a></li>
-      <li><a href="/user/signup">join</a></li>
-    </ul>
-  </div>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- 제이쿼리 불러오기 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css">
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.min.js"></script>
+
+  <!-- 공통 css 연결 -->
+  <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+
+  <title>Portfolio</title>
+
 </head>
 
 <body style="min-height:100vh;" class="d-flex flex-column">
+
+<!-- 네비게이션바 -->
+<nav th:replace="~{navbar :: navbarFragment}"></nav>
+
 <!-- 기본 템플릿 안에 삽입될 내용 Start -->
 <main class="flex-grow-1">
   <th:block layout:fragment="content"></th:block>
@@ -35,11 +37,28 @@
 <th:block layout:fragment="script"></th:block>
 <!-- 자바스크립트 End -->
 
-</body>
 
-<footer style="bg-black">
+<footer class="footer bg-dark text-light">
   <div class="container py-3 d-flex justify-content-center">
-    copyright all rights reserved
+    Thank You!!!!
   </div>
 </footer>
+
+
+<!-- HTML이 전부 로딩 된 후, 실행되어야 하는 녀석(자바스크립트 코드)들은 밑에 두는게 좋다. -->
+<script>
+  $('select[value]').each((index, node) => {
+    const $select = $(node);
+    const value = $(node).attr("value");
+    $select.find(`option[value='${value}']`).prop("selected", true);
+  });
+</script>
+
+<select value="2">
+  <option value="1">1</option>
+  <option value="2">2</option>
+</select>
+
+
+</body>
 </html>

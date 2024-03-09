@@ -1,26 +1,24 @@
-<html
-    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-    xmlns:th="http://www.thymeleaf.org"
-    layout:decorate="~{layout}">
+<html lang="ko"
+      xmlns:layout="http://ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://thymeleaf.org"
+      layout:decorate="~{layout}">
 
-<div layout:fragment="content" class="container my-3">
-  <h5 class="my-3 border-bottom pb-2">프로젝트 등록</h5>
+<div layout:fragment="content" class="container">
+  <h5 class="my-3 border-bottom pb-2">질문등록</h5>
 
-  <form th:action="@{''}" th:object="${questionForm}" method="POST">
-    <!-- form_error에 중복을 제거하여 코드 간결. -->
+  <form th:action=@{''} th:object="${questionForm}" method="post">
     <div th:replace="~{form_errors :: formErrorsFragment}"></div>
 
     <div class="mb-3">
-      <label class="form-label">프로젝트 제목</label>
-      <input th:field="*{subject}" type="text" class="form-control" placeholder="프로젝트제목을 입력해주세요.">
+      <label class="form-label" >제목</label>
+      <input th:field="*{subject}" type="text" class="form-control" placeholder="제목을 입력해주세요">
     </div>
-
     <div class="mb-3">
-      <label class="form-label">프로젝트 내용</label>
-      <textarea th:field="*{content}" class="form-control" rows="10" placeholder="프로젝트내용을 입력해주세요."></textarea>
+      <label class="form-label">내용</label>
+      <textarea class="form-control" rows="10" placeholder="내용을 입력해주세요" th:field="*{content}"></textarea>
     </div>
 
-    <button type="submit" class="btn btn-primary my-2">저장하기</button>
+    <input type="submit" value="저장하기" class="btn btn-primary my-2">
   </form>
 </div>
 </html>

@@ -3,7 +3,6 @@ package com.example.sbb.question;
 import com.example.sbb.answer.AnswerForm;
 import com.example.sbb.user.SiteUser;
 import com.example.sbb.user.UserService;
-import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -41,17 +40,14 @@ public class QuestionController {
 
   @GetMapping("/list")
   // 이 자리에 @ResponseBody가 없으면 resource/template/question_list.html 파일을 뷰로 삼는다.
-  public String list(HttpSession session, Model model, @RequestParam(defaultValue="0") int page) {
+  public String list(String kw, Model model, @RequestParam(defaultValue="0") int page) {
 
-    Object o = session.getAttribute("SPRING_SECURITY_CONTEXT");
-    System.out.println(o);
-
-      Page<Question> paging = questionService.getList(page);
-
+    Page<Question> paging = questionService.getList(kw, page);
 
     // 미리 실행된 question_list.html에서
     // questionList 라는 이름으로 questionList 변수를 사용할 수 있다.
     model.addAttribute("paging", paging);
+    model.addAttribute("kw", kw);
     return "question_list";
   }
 

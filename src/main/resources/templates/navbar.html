@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<nav th:fragment="navbarFragment">
+  <div class="container-fluid">
+    <div class="navbar">
+      <h2>PORTFOLIO</h2>
+      <ul>
+        <li>
+          <a th:href="@{/home}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a th:href="@{/question/list}">Project Board</a>
+        </li>
+        <li>
+          <!--  sec:authorize="isAnonymous() : 로그아웃 상태일 때만 렌더링 -->
+          <a sec:authorize="isAnonymous()" th:href="@{/user/login}">Login</a>
+          <!--  sec:authorize="isAuthenticated() : 로그인 상태 일 때만 렌더링 -->
+          <a sec:authorize="isAuthenticated()" th:href="@{/user/logout}">Logout</a>
+        </li>
+
+        <li class="nav-item">
+          <a sec:authorize="isAnonymous()" th:href="@{/user/signup}">Join</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+</html>

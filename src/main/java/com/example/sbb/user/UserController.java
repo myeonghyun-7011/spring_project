@@ -1,5 +1,7 @@
 package com.example.sbb.user;
 
+import com.example.sbb.Exception.SignupEmailDuplicatedException;
+import com.example.sbb.Exception.SignupUsernameDuplicatedException;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

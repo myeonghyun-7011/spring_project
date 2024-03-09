@@ -1,4 +1,4 @@
-package com.example.sbb.user;
+package com.example.sbb.Exception;
 
 public class SignupEmailDuplicatedException extends RuntimeException {
   public SignupEmailDuplicatedException(String message) {
