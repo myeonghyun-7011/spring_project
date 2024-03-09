@@ -2,7 +2,9 @@
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
     xmlns:th="http://www.thymeleaf.org"
     layout:decorate="~{layout}">
+
 <div layout:fragment="content" class="container my-3">
+
   <table class="table text-center">
     <colgroup>
       <col>
@@ -59,6 +61,7 @@
   <!-- 페이징처리 끝 -->
 
   <a th:href="@{/question/create}" class="btn btn-primary">질문 등록하기</a>
+
 </div>
 
 </html>

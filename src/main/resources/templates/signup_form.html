@@ -4,32 +4,53 @@
     layout:decorate="~{layout}">
 
 <div layout:fragment="content" class="container my-3">
-  <div class="my-3 border-bottom">
-    <div>
-      <h4>회원가입</h4>
+  <div>
+    <h4 style="
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px; ">회원가입</h4>
+    <div class="row justify-content-center">
+      <div style="with:60%" class="col-md-7">
+        <form class="border"
+            style="
+      text-align: center;
+      font-size: 20px;
+      width:350px;
+      justify-content: center;
+      align-items: center;
+      margin-left: 200px"
+              th:action="@{/user/signup}"
+              th:object="${userCreateForm}"
+              method="post"
+        >
+          <div th:replace="~{form_errors :: formErrorsFragment}"></div>
+
+          <div class="mb-3 ">
+            <label class="form-label">사용자ID</label>
+            <input type="text" th:field="*{username}" class="form-control" placeholder="ID를 입력해주세요."/>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">비밀번호</label>
+            <input type="password" th:field="*{password1}" class="form-control" placeholder="비밀번호를 입력해주세요."/>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">비밀번호 확인</label>
+            <input type="password" th:field="*{password2}" class="form-control" placeholder="비밀번호를 확인해주세요."/>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">이메일</label>
+            <input type="email" th:field="*{email}" class="form-control" placeholder="이메일을 입력해주세요."/>
+          </div>
+          <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary ">회원가입</button>
+          </div>
+
+        </form>
+      </div>
     </div>
   </div>
-  <form th:action="@{/user/signup}" th:object="${userCreateForm}" method="post">
-
-    <div th:replace="~{form_errors :: formErrorsFragment}"></div>
-
-    <div class="mb-3">
-      <label class="form-label">사용자ID</label>
-      <input type="text" th:field="*{username}" class="form-control">
-    </div>
-    <div class="mb-3">
-      <label class="form-label">비밀번호</label>
-      <input type="password" th:field="*{password1}" class="form-control">
-    </div>
-    <div class="mb-3">
-      <label class="form-label">비밀번호 확인</label>
-      <input type="password" th:field="*{password2}" class="form-control">
-    </div>
-    <div class="mb-3">
-      <label class="form-label">이메일</label>
-      <input type="email" th:field="*{email}" class="form-control">
-    </div>
-    <button type="submit" class="btn btn-primary">회원가입</button>
-  </form>
 </div>
+
+
 </html>

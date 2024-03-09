@@ -1,0 +1,15 @@
+
+h4 {
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px; /* 화면 전체 높이에 맞게 조절합니다 */
+  }
+
+  form {
+    background-color: blue;
+    text-align: center;
+  }
+
+
