@@ -9,8 +9,9 @@
     font-family: "Ubuntu";
     animation: rotate 6s infinite alternate linear;
 }
+
 h1{
-  padding-bottom: 15px;
+  padding-bottom: 25px;
 }
 
 form{
