@@ -27,8 +27,8 @@ button[type=submit] {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
 }
+
 body{
   background-color: #44505c;
   color:black;
@@ -45,7 +45,9 @@ body{
 }
 
 .navbar h2{
-  display: flex;
+  padding-left: 500px;
+  margin-left: 350px;
+  display: inline-block;
   align-items: center;
   justify-content: center;
   color: #ffb742;

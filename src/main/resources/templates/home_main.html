@@ -1,10 +1,53 @@
-<!doctype html>
 <html lang="ko"
       xmlns:layout="http://ultraq.net.nz/thymeleaf/layout"
       xmlns:th="http://thymeleaf.org"
       layout:decorate="~{layout}">
-<body>
 
-</body>
+<div layout:fragment="content">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/home_style.css}">
+  </head>
+
+  <body>
+
+  <h5 class="seprator">Who I Am</h5>
+
+  <div class="about">
+    <img src="김명현.jpg">
+    <div class="info">
+      <h3>About Me</h3>
+      <p>
+        안녕하세요. 신입 DevOps / 시스템 관리자입니다. 전 현재 듣고 있는 카카오엔지니어클라우드 교육을 들으며 프로젝트 중 VMware ubuntu를 사용해 docker를 통해 grafana로 데이터를 수집해 Prometheus로 좀 더 시각화하는 프로젝트를 진행했습니다.  웹에 띄어진 DB 정보를 어떻게 가져와야 하는지 고민 하면서 DB 컨테이너만을  Galera-Cluster로 묶어 Cadvisor와 NodeExporter를 통해 데이터를 수집해 PHP-Admin을 웹으로 띄워 DB정보를 웹으로 수정 할 수 있게끔 했고 Git Hub에 Commit 해두고 Jenkins를 통해 자동 CI/CD 를 구성해 실시간 수정된 DB 정보를 가져오게끔 생성하고 마지막으로 DB 정보를 Prometheus로 시각화 까지 진행 하였습니다.  두번째 프로젝트로는 intelij 프로그램에 Spring 프레임워크 와 Java , MariaDB를 사용하여, 나만의 자소서 웹을 만들어 로그인과 회원가입 프로젝트 게시판을 만들어 보았습니다. 아쉬웠던건 AWS를 통해 배포는 아직 못했고 AWS를 좀 더 배운후 배포해볼 예정입니다.
+      </p>
+    </div>
+  </div>
+  <!-- --------------------------------------------------------------------------------- -->
+  <div class="formation">
+    <h5 class="seprator">My Information</h5>
+    <div class="about1">
+      <div class="info">
+        <table class="myself">
+          <h1>김 명현</h1>
+          <h1>DevOps Engineer</h1>
+          <tbody class="myself1">
+          <tr>
+            <th scope="row">Birthday :</th>
+            <td>1995.09.06</td>
+          </tr>
+          <tr>
+            <th scope="row">E-amil :</th>
+            <td>dhvlftmd7013@naver.com</td>
+          </tr>
+          <tr>
+            <th scope="row">병역사항 :</th>
+            <td>군필(육군)</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  </body>
+</div>
 </html>
-
