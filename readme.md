@@ -1,3 +1,4 @@
+![poster]([./image.png](https://www.notion.so/Portfolio-19f37c0a625843d98a449c953c80f194?pvs=4#fc7dad63eb8340fd924672077a7df321))
 # Spring boot 를 통한 프로젝트 게시판 소개
 ## 기능 구현
 1. 자기소개서 작성
