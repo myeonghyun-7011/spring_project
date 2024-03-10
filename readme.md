@@ -1,3 +1,4 @@
+![poster]("C:\Users\김명현\Desktop\portfolio.png")
 # Spring boot 를 통한 프로젝트 게시판 소개
 ## 기능 구현
 1. 자기소개서 작성
