@@ -46,7 +46,7 @@ public class QuestionRepositoryTests {
 
     Question q1 = new Question();
 
-    q1.setSubject("sbb가 무엇인가요?");
+    q1.setSubject("Project1");
     q1.setContent("sbb에 대해서 알고 싶습니다.");
     q1.setAuthor(new SiteUser(1));
     q1.setCreateDate(LocalDateTime.now());
@@ -82,7 +82,7 @@ public class QuestionRepositoryTests {
   @Test
   void 저장() {
     Question q1 = new Question();
-    q1.setSubject("sbb가 무엇인가요?");
+    q1.setSubject("Project1");
     q1.setContent("sbb에 대해서 알고 싶습니다.");
     q1.setAuthor(new SiteUser(1));
     q1.setCreateDate(LocalDateTime.now());
@@ -103,7 +103,7 @@ public class QuestionRepositoryTests {
   @Test
   void 삭제() {
     assertThat(questionRepository.count()).isEqualTo(lastSampleDataId);
-    Question q = questionRepository.findById(1).get(); // 그중에 1번을 찾고 oq 에 넣어줌
+    Question q = questionRepository.findById(2).get(); // 그중에 1번을 찾고 oq 에 넣어줌
     questionRepository.delete(q); // 삭제
 
     assertThat(questionRepository.count()).isEqualTo(lastSampleDataId - 1);
@@ -127,7 +127,7 @@ public class QuestionRepositoryTests {
     assertThat(all.size()).isEqualTo(lastSampleDataId);
 
     Question q = all.get(0);
-    assertThat(q.getSubject()).isEqualTo("sbb가 무엇인가요?");
+    assertThat(q.getSubject()).isEqualTo("Project1");
   }
 
   @Test
@@ -143,14 +143,14 @@ public class QuestionRepositoryTests {
 
   @Test
   void findBySubject() {
-    Question q = this.questionRepository.findBySubject("sbb가 무엇인가요?");
+    Question q = this.questionRepository.findBySubject("Project1");
     assertThat(q.getId()).isEqualTo(1);
   }
 
   @Test
   void findBySubjectAndContent() {
     Question q = this.questionRepository.findBySubjectAndContent(
-        "sbb가 무엇인가요?", "sbb에 대해서 알고 싶습니다.");
+        "Project1", "sbb에 대해서 알고 싶습니다.");
     assertThat(q.getId()).isEqualTo(1);
   }
 
@@ -158,7 +158,7 @@ public class QuestionRepositoryTests {
   void findBySubjectLike() {
     List<Question> qList = this.questionRepository.findBySubjectLike("sbb%");
     Question q = qList.get(0);
-    assertThat(q.getSubject()).isEqualTo("sbb가 무엇인가요?");
+    assertThat(q.getSubject()).isEqualTo("Project1");
   }
 
 

@@ -35,23 +35,28 @@ body{
 }
 
 .navbar{
+  background-color: blue;
   border-bottom: solid #ffb742;;
   display: flex;
-  align-items: center;
   justify-content: space-between;
   height: 80px;
   padding: 0 50px;
 
 }
 
-.navbar h2{
-  padding-left: 500px;
-  margin-left: 350px;
-  display: inline-block;
-  align-items: center;
-  justify-content: center;
+.navbar .h2{
   color: #ffb742;
   font-weight: 600;
+}
+
+.h2 {
+background-color:red;
+ max-width: 1200px; /* 예시로 최대 너비를 지정 */
+  margin: 0 auto; /* 가운데 정렬을 위해 좌우 마진을 auto로 지정 */
+  padding-right: 40px; /* 오른쪽 padding 예시 */
+  padding-left: 420px; /* 왼쪽 padding 예시 */
+    display: flex;
+      justify-content: center;
 }
 
 .navbar ul{
