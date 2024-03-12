@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.IntStream;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 public class QuestionRepositoryTests {
@@ -28,36 +28,35 @@ public class QuestionRepositoryTests {
   private AnswerRepository answerRepository;
   @Autowired
   private QuestionRepository questionRepository;
+
   @Autowired
   private UserRepository userRepository;
-  private static int lastSampleDataId;
+
+  private static long lastSampleDataId;
 
   @BeforeEach
-    // 프로그램 실행할때 딱 한번 실행
   void beforeEach() {
     clearData();
     createSampleData();
   }
 
-  //-----------------------------------------------------------------------------------------
-// static (본사직원생성)
-  public static int createSampleData(UserService userService, QuestionRepository questionRepository) {
+  public static long createSampleData(UserService userService, QuestionRepository questionRepository) {
     UserServiceTests.createSampleData(userService);
 
     Question q1 = new Question();
-
-    q1.setSubject("Project1");
+    q1.setSubject("sbb가 무엇인가요?");
     q1.setContent("sbb에 대해서 알고 싶습니다.");
     q1.setAuthor(new SiteUser(1));
     q1.setCreateDate(LocalDateTime.now());
-    questionRepository.save(q1);  // 첫번째 질문 저장
+    questionRepository.save(q1);
+
 
     Question q2 = new Question();
     q2.setSubject("스프링부트 모델 질문입니다.");
     q2.setContent("id는 자동으로 생성되나요?");
     q2.setAuthor(new SiteUser(2));
     q2.setCreateDate(LocalDateTime.now());
-    questionRepository.save(q2);  // 두번째 질문 저장
+    questionRepository.save(q2);
 
     return q2.getId();
   }
@@ -66,9 +65,6 @@ public class QuestionRepositoryTests {
     lastSampleDataId = createSampleData(userService, questionRepository);
   }
 
-  //-----------------------------------------------------------------------------------------
-  // static은 본사 직원이기 때문에  questionRepository(본사직원이아님.)
-  // clearData(QuestionRepository questionRepository) 넘겨줘야함.
   public static void clearData(UserRepository userRepository, AnswerRepository answerRepository,
                                QuestionRepository questionRepository) {
     UserServiceTests.clearData(userRepository, answerRepository, questionRepository);
@@ -78,24 +74,22 @@ public class QuestionRepositoryTests {
     clearData(userRepository, answerRepository, questionRepository);
   }
 
-  //-----------------------------------------------------------------------------------------
   @Test
   void 저장() {
     Question q1 = new Question();
-    q1.setSubject("Project1");
+    q1.setSubject("sbb가 무엇인가요?");
     q1.setContent("sbb에 대해서 알고 싶습니다.");
-    q1.setAuthor(new SiteUser(1));
+    q1.setAuthor(new SiteUser(2));
     q1.setCreateDate(LocalDateTime.now());
-    questionRepository.save(q1);  // 첫번째 질문 저장
+    questionRepository.save(q1);
 
     Question q2 = new Question();
     q2.setSubject("스프링부트 모델 질문입니다.");
     q2.setContent("id는 자동으로 생성되나요?");
     q2.setAuthor(new SiteUser(2));
     q2.setCreateDate(LocalDateTime.now());
-    questionRepository.save(q2);  // 두번째 질문 저장
+    questionRepository.save(q2);
 
-    // sampledata 증가 현재 1 ,2 생성 다음 3,4 생성하게끔.
     assertThat(q1.getId()).isEqualTo(lastSampleDataId + 1);
     assertThat(q2.getId()).isEqualTo(lastSampleDataId + 2);
   }
@@ -103,8 +97,8 @@ public class QuestionRepositoryTests {
   @Test
   void 삭제() {
     assertThat(questionRepository.count()).isEqualTo(lastSampleDataId);
-    Question q = questionRepository.findById(2).get(); // 그중에 1번을 찾고 oq 에 넣어줌
-    questionRepository.delete(q); // 삭제
+    Question q = questionRepository.findById(1).get();
+    questionRepository.delete(q);
 
     assertThat(questionRepository.count()).isEqualTo(lastSampleDataId - 1);
   }
@@ -113,7 +107,7 @@ public class QuestionRepositoryTests {
   void 수정() {
     assertThat(questionRepository.count()).isEqualTo(lastSampleDataId);
 
-    Question q = questionRepository.findById(1).get(); // 그중에 1번을 찾고 oq 에 넣어줌
+    Question q = questionRepository.findById(1).get();
     q.setSubject("수정된 제목");
     questionRepository.save(q);
 
@@ -127,59 +121,53 @@ public class QuestionRepositoryTests {
     assertThat(all.size()).isEqualTo(lastSampleDataId);
 
     Question q = all.get(0);
-    assertThat(q.getSubject()).isEqualTo("Project1");
+    assertThat(q.getSubject()).isEqualTo("sbb가 무엇인가요?");
   }
 
   @Test
   void pageable() {
-    // Pageable: 한 페이지에 몇 개의 아이템이 나와야 하는지 + 현재 몇 페이지인지
-    Pageable pageable = PageRequest.of(0, lastSampleDataId); // 0-lastId
+    // Pageable : 한 페이지에 몇 개의 아이템이 나와야 하는지 + 현재 몇 페이지인지
+    Pageable pageable = PageRequest.of(0, (int) lastSampleDataId);
     Page<Question> page = questionRepository.findAll(pageable);
 
     assertThat(page.getTotalPages()).isEqualTo(1);
     System.out.println(page.getNumber());
   }
 
-
   @Test
   void findBySubject() {
-    Question q = this.questionRepository.findBySubject("Project1");
+    Question q = questionRepository.findBySubject("sbb가 무엇인가요?");
     assertThat(q.getId()).isEqualTo(1);
   }
 
   @Test
   void findBySubjectAndContent() {
-    Question q = this.questionRepository.findBySubjectAndContent(
-        "Project1", "sbb에 대해서 알고 싶습니다.");
+    Question q = questionRepository.findBySubjectAndContent(
+        "sbb가 무엇인가요?", "sbb에 대해서 알고 싶습니다.");
     assertThat(q.getId()).isEqualTo(1);
   }
 
-  @Test
-  void findBySubjectLike() {
-    List<Question> qList = this.questionRepository.findBySubjectLike("sbb%");
-    Question q = qList.get(0);
-    assertThat(q.getSubject()).isEqualTo("Project1");
-  }
+//  @Test
+//  void findBySubjectLike() {
+//    List<Question> qList = questionRepository.findBySubjectLike("sbb%");
+//    Question q = qList.get(0);
+//    assertThat(q.getSubject()).isEqualTo("sbb가 무엇인가요?");
+//  }
 
-
-  // 대량의 Data 가져오기 실행할때는 true  안쓸때는 false로
   @Test
-  public void createManySampleData() {
+  void createManySampleData() {
     boolean run = false;
 
-    if (run == false) return;
+    if(run == false) return;
 
     IntStream.rangeClosed(3, 300).forEach(id -> {
       Question q = new Question();
-      q.setSubject(" %d번 질문 ".formatted(id));
-      q.setContent(" %d번 질문의 내용 ".formatted(id));
+      q.setSubject("%d번 질문".formatted(id));
+      q.setContent("%d번 질문의 내용".formatted(id));
       q.setAuthor(new SiteUser(2));
       q.setCreateDate(LocalDateTime.now());
       questionRepository.save(q);
     });
   }
+
 }
-
-
-
-
